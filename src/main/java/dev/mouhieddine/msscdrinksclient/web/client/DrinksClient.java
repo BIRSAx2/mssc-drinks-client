@@ -6,6 +6,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
 import java.util.UUID;
 
 /**
@@ -25,6 +26,10 @@ public class DrinksClient {
 
   public DrinkDto getDrinkById(UUID id) {
     return restTemplate.getForObject(apihost + DRINK_PATH_V1 + id.toString(), DrinkDto.class);
+  }
+
+  public URI createDrink(DrinkDto drinkDto) {
+    return restTemplate.postForLocation(apihost + DRINK_PATH_V1, drinkDto);
   }
 
   public void setApihost(String apihost) {

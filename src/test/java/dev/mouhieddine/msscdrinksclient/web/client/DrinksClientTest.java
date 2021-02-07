@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.net.URI;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -22,6 +23,13 @@ class DrinksClientTest {
 
   @BeforeEach
   void setUp() {
+  }
+
+  @Test
+  void createDrink() {
+    DrinkDto drinkDto = DrinkDto.builder().name("New Drink").build();
+    URI uri = drinksClient.createDrink(drinkDto);
+    assertNotNull(uri);
   }
 
   @Test
