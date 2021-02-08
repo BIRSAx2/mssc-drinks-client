@@ -1,5 +1,6 @@
 package dev.mouhieddine.msscdrinksclient.web.client;
 
+import dev.mouhieddine.msscdrinksclient.web.model.CustomerDto;
 import dev.mouhieddine.msscdrinksclient.web.model.DrinkDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -47,5 +48,28 @@ class DrinksClientTest {
   void getDrinkById() {
     DrinkDto drinkDto = drinksClient.getDrinkById(UUID.randomUUID());
     assertNotNull(drinkDto);
+  }
+  @Test
+  void getCustomerById() {
+    CustomerDto customerDto = drinksClient.getCustomerById(UUID.randomUUID());
+    assertNotNull(customerDto);
+  }
+
+  @Test
+  void createCustomer() {
+    CustomerDto customerDto = CustomerDto.builder().name("New customer").build();
+    URI uri = drinksClient.createCustomer(customerDto);
+    assertNotNull(uri);
+  }
+
+  @Test
+  void deleteCustomer() {
+    drinksClient.deleteCustomer(UUID.randomUUID());
+  }
+
+  @Test
+  void updateCustomer() {
+    CustomerDto customerDto = CustomerDto.builder().name("New customer").build();
+    drinksClient.updateCustomer(UUID.randomUUID(), customerDto);
   }
 }
