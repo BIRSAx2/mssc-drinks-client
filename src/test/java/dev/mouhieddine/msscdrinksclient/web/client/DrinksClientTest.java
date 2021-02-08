@@ -33,6 +33,17 @@ class DrinksClientTest {
   }
 
   @Test
+  void updateDrink() {
+    DrinkDto drinkDto = DrinkDto.builder().name("New Drink").build();
+    drinksClient.updateDrink(UUID.randomUUID(), drinkDto);
+  }
+
+  @Test
+  void deleteDrink() {
+    drinksClient.deleteDrink(UUID.randomUUID());
+  }
+
+  @Test
   void getDrinkById() {
     DrinkDto drinkDto = drinksClient.getDrinkById(UUID.randomUUID());
     assertNotNull(drinkDto);

@@ -32,7 +32,15 @@ public class DrinksClient {
     return restTemplate.postForLocation(apihost + DRINK_PATH_V1, drinkDto);
   }
 
+  public void deleteDrink(UUID id) {
+    restTemplate.delete(apihost + DRINK_PATH_V1 + id.toString());
+  }
+
   public void setApihost(String apihost) {
     this.apihost = apihost;
+  }
+
+  public void updateDrink(UUID id, DrinkDto drinkDto) {
+    restTemplate.put(apihost + DRINK_PATH_V1 + id.toString(), drinkDto);
   }
 }
